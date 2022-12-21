@@ -8,3 +8,7 @@ services:
     container_name: demo
     ports:
       - 8081:8080
+    network_mode: host
+    volumes:
+      - /usr/share/nginx/userHelp:/usr/share/nginx/userHelp
+

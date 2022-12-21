@@ -1,0 +1,63 @@
+server:
+  port: 10500
+  servlet:
+    context-path: /shop
+spring:
+  application:
+    name: yagoo-shop-application
+  datasource:
+    druid:
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: ygsuper
+        login-password: admin@110
+      web-stat-filter:
+        enabled: true
+        session-stat-enable: true
+        principal-session-name: ygsuper
+        principal-cookie-name: admin@110
+        profile-enable: true
+    username: root
+    password: YG#root@safe
+    url: jdbc:mysql://192.168.2.93:3306/yagoo-shop?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai&serverTimezone=GMT%2b8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cache:
+    type: simple
+  data:
+    mongodb:
+      uri: mongodb://192.168.2.93:27017
+#      database: cross_border_ec
+      database: cross_border_ec_test
+
+  redis:
+    host: 192.168.2.93
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 500000
+
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 500MB
+      max-request-size: 500MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+account:
+  min-fans: 10000
+  min-spread: 500
+traceability:
+  min-hotspot-score: 70
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
